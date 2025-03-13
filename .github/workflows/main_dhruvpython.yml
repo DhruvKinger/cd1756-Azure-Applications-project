@@ -28,6 +28,17 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+
+          steps:
+  - script: |
+      sudo apt update
+      sudo apt install -y unixodbc-dev
+    displayName: 'Install ODBC Dependencies'
+
+  - script: |
+      pip install pyodbc
+    displayName: 'Install pyodbc'
+
       
       - name: Install dependencies
         run: pip install -r requirements.txt
